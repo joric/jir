@@ -7,13 +7,13 @@ SET str1=%%F
 
 echo %str1% | findstr /C:"left" && (
 	echo LEFT
-	bash "fan_on.sh"
+	bash "fan_ctrl.sh" "speed"
 	exit
 )
 
 echo %str1% | findstr /C:"right" && (
 	echo RIGHT
-	bash "fan_off.sh"
+	bash "fan_ctrl.sh" "off"
 	exit
 )
 
