@@ -5,13 +5,14 @@ A small ESP12f (ESP8266)-based project for DIY IR controller
 ## Description
 
 There are a few type of IR codes I couldn't make short (32-bit NEC) codes work on my devices so I went with raw ones (long sequences of numbers) sent at 38 KHz.
+
 Use IRController (originally from https://github.com/mdhiggins/ESP8266-HTTP-IR-Blaster) with NodeMCU and IR receiver to capture IR codes (usually RAW with length 48).
 Use IRSender with ESP12F and IR LED for sending the codes. See scripts directory for scripts.
+
 IR modules are from 37-in-1 sensors set. 3.3V regulator module is AMS1117-based.
 NodeMCU modules might be a nicer choice (built in UART and 3.3V regulator) but they're more expensive than raw esp8266 modules.
 
 **WARNING: never power ESP8266 from 5V, always use 3.3V or the module dies in a about a week (confirmed!)**
-
 
 
 ## Video
@@ -26,7 +27,7 @@ IR Sender (ESP12F-based)
 IR Receiver (NodeMCU-based)
 ![](https://i.imgur.com/2mgzBxz.jpg)
 
-Fan (the black box is Hi-Link 5V PSU), built in condencer PSU is only 15 mA, ESP8266 needs 300 mA
+Fan (the black box is Hi-Link 5V PSU), built in condenser PSU is only 15 mA, ESP8266 needs 300 mA
 ![](https://i.imgur.com/v785Rjy.jpg)
 
 IR Sender Web Interface
