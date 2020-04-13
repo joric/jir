@@ -1,3 +1,6 @@
+# these are RC5 (probably) codes for the Mystery (Airmate) Fan, grabbed with IR controller
+# originally they were longer but they just repeat 4 times so they're 4 times shorter here
+
 param=backlit
 
 if [ ! -z "$1" ]; then
