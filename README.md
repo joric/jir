@@ -40,4 +40,4 @@ IR Sender Web Interface
 * https://clearwater.com.au/code/rc5
 * http://www.hifi-remote.com/johnsfine/DecodeIR.html
 * https://github.com/probonopd/irdb
-* https://github.com/bengtmartensson/IrScrutinizer/releases/
+* https://github.com/bengtmartensson/IrScrutinizer/releases
