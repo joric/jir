@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!--script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script-->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<title>IR Codes</title>
+
+<style>
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+body > .container {
+  padding-top: 40px;
+  background-color: white;
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container"><a class="navbar-brand" href="#">IR Codes</a>
+<div class="collapse navbar-collapse" id="navbarsExample07">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item active"><a class="nav-link" href="#">Converter <span class="sr-only">(current)</span></a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container">
+<form>
+<div class="form-group row"><label for="preset" class="col-sm-2 col-form-label">Buttons</label>
+<div class="col-sm-7">
+<div id="presets" class="btn-group btn-group-toggle" data-toggle="buttons"><!--label class="btn btn-secondary active">
+            <input type="radio" name="preset" id="preset_custom" checked> Custom
+          </label--></div>
+</div>
+</div>
+<div class="form-group row"><label for="codes" class="col-sm-2 col-form-label">Data</label>
+<div class="col-sm-10">
+<textarea class="form-control" id="raw" rows="4" title="comma-separated values"></textarea>
+<div id="hint"></div>
+</div>
+</div>
+<canvas class="my-4 w-100" id="myChart" width="900" height="400"></canvas>
+</form>
+</div>
+<script>
+
+var myChart = null;
+
+function updateChart() {
+
+    var s = $('#raw').val();
+
+    var data = s=='' ? [] : s.replace(/, +/g, ",").split(",").map(Number);
+
+    var n = data.length;
+
+    //pulse_ms = 1000/38000;
+    pulse_ms = 0.889;
+
+    var ms = n * pulse_ms;
+    var mse = n==0 ? 0 : ms / n;
+
+    $('#hint').text(n+" value"+(n!=1?"s":"")+", " + ms.toFixed(3) + " ms ("+mse.toFixed(3)+" ms per value, 38 KHz modulation)");
+
+    //add the last value to data to make better chart
+    data.push(data.slice(-1)[0]);
+
+    var labels = []
+    var t = 0;
+
+    for (var i=0; i<data.length; i++) {
+        t = i * pulse_ms;
+        labels.push(t.toFixed(2)+'ms');
+    }
+
+
+  var ctx = document.getElementById('myChart')
+
+  if (myChart) myChart.destroy();
+
+  myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        steppedLine: 'before',
+        data: data,
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#007bff',
+        borderWidth: 2,
+        pointBackgroundColor: '#007bff',
+        pointRadius: 1,
+        pointHoverRadius: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: false
+          }
+        }]
+      },
+      legend: {
+        display: false
+      },
+    }
+  });
+
+
+}
+
+var presets={
+    'speed':[1330,438,1258,440,410,1288,1260,438,1258,440,384,1312,386,1312,412,1286,386,1312,386,1312,1260,440,384,8106,1264,438,1258,440,412,1284,1260,440,1258,438,384,1312,416,1284,384,1314,412,1286,386,1312,1260,438,386,8038,1328,440,1258,440,382,1314,1258,440,1258,440,384,1314,384,1314,410,1288,410,1288,386,1312,1264,434,386,8038,1328,440,1260,438,412,1284,1260,438,1260,438,412,1286,386,1312,386,1312,384,1314,386,1312,1260,438,386],
+    'rotate':[1266,438,1260,440,412,1284,1260,438,1260,438,408,1288,414,1286,412,1284,410,1288,386,1312,412,1284,1260,7230,1266,436,1260,438,410,1286,1260,438,1260,438,412,1284,414,1284,384,1314,410,1288,412,1286,412,1286,1262,7160,1330,440,1260,438,412,1284,1260,438,1258,440,408,1288,386,1310,388,1312,414,1284,388,1310,410,1288,1262,7160,1330,438,1260,438,410,1288,1260,438,1260,438,410,1288,414,1284,384,1314,384,1312,414,1284,412,1286,1260],
+    'mode':[1328,440,1258,440,384,1314,1260,438,1262,436,384,1314,382,1316,1258,440,386,1310,388,1310,384,1314,384,8038,1328,440,1258,440,386,1310,1262,438,1258,438,414,1284,384,1314,1260,438,412,1286,382,1314,384,1314,384,8040,1330,436,1260,438,386,1312,1260,438,1258,440,386,1312,386,1312,1260,438,410,1288,386,1312,386,1312,386,8038,1330,438,1262,436,384,1314,1264,434,1258,440,384,1314,382,1314,1260,438,386,1312,402,1296,386,1314,384],
+    'preset':[1330,438,1260,438,410,1288,1260,440,1258,440,412,1284,414,1284,412,1286,412,1286,1262,436,410,1286,410,8012,1332,438,1260,438,410,1288,1260,438,1260,438,386,1310,414,1284,414,1284,410,1290,1260,438,412,1284,412,8010,1330,440,1260,438,412,1284,1260,440,1260,438,412,1284,412,1286,408,1288,414,1284,1260,438,412,1286,386,8036,1330,438,1260,440,410,1286,1260,440,1260,438,408,1288,410,1288,412,1284,412,1286,1260,438,414,1284,414],
+    'backlit':[1328,440,1260,438,412,1284,1260,440,1260,440,1258,438,412,1286,386,1310,410,1288,388,1310,1258,440,1262,7228,1262,440,1258,440,410,1288,1260,438,1262,436,1260,436,386,1312,384,1314,412,1286,384,1312,1260,440,1262,7160,1328,440,1258,440,412,1284,1262,438,1258,440,1258,440,386,1312,386,1312,386,1312,386,1312,1262,438,1260,7162,1332,436,1258,440,414,1284,1260,438,1260,438,1258,440,410,1286,386,1312,384,1312,386,1312,1260,438,1260],
+    'off':[1330,438,1260,440,410,1286,1258,440,1262,436,1258,438,410,1288,410,1288,414,1284,1260,440,1258,438,414,8008,1330,440,1258,440,412,1284,1258,440,1260,438,1260,436,384,1312,414,1284,386,1312,1260,438,1260,440,412,8076,1262,440,1260,438,410,1288,1260,440,1258,440,1258,438,412,1284,414,1284,410,1288,1262,436,1258,440,412,8010,1330,438,1260,438,410,1286,1260,440,1260,440,1258,438,408,1290,410,1288,410,1288,1260,440,1260,440,410]
+};
+
+$(document).ready( function() {
+    $('#raw').focus();
+
+    for (const [key, data] of Object.entries(presets)) {
+        title = key.charAt(0).toUpperCase() + key.slice(1);
+        $('#presets').append('<label class="btn btn-secondary"><input type="radio" name="preset" id="preset_'+key+'" data-raw="'+data+'">'+title+"<\/label>");
+    }
+
+    $('#presets input:radio').change(function() {
+        $('#raw').val(this.dataset.raw);
+        updateChart();
+    });
+
+
+    var wto;
+    $('#raw').on('input', function() {
+        clearTimeout(wto);
+          wto = setTimeout(function() {
+        // do stuff when user has been idle for 1 second
+        updateChart();
+        }, 500);
+    });
+
+    $('#preset_speed').click();
+
+    /*
+    $.get( "https://cdn.jsdelivr.net/gh/probonopd/irdb@master/codes/index", function( data ) {
+        v = data.split('\n');
+        console.log('loaded',v.length,'definitions');
+    });
+    */
+
+});
+
+</script>
+</body>
+</html>
