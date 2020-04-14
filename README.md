@@ -4,7 +4,9 @@ A small ESP-12F (ESP8266)-based project for DIY IR controller
 
 ## Description
 
-Use IRController (originally from [ESP8266-HTTP-IR-Blaster](https://github.com/mdhiggins/ESP8266-HTTP-IR-Blaster)) with NodeMCU or (IRCapture_Nano for Arduino Nano) and IR receiver to capture IR codes (usually RAW with length 48).
+Use IRController
+(originally from [ESP8266-HTTP-IR-Blaster](https://github.com/mdhiggins/ESP8266-HTTP-IR-Blaster))
+with NodeMCU (or IRCapture_Nano for Arduino Nano) and IR receiver to capture IR codes (usually RAW with length 48).
 Use IRSender with ESP-12F and IR LED to send the codes.
 
 IR receiver and transmitter modules are from 37-in-1 sensors set. 3.3V regulator is AMS1117-based.
