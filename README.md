@@ -15,6 +15,11 @@ Note that ESP12-F died from 5V in about a week. NodeMCU modules are better (buil
 There are a few type of IR codes I couldn't make short (32-bit NEC) codes work on my devices so I went with raw ones (long sequences of numbers) sent at 38 KHz.
 They ought to be [F12](http://www.hifi-remote.com/johnsfine/DecodeIR.html#F12) codes (download [IrScrutinizer](https://github.com/bengtmartensson/IrScrutinizer/releases/) to decode raw format).
 
+You can also capture codes using [IrScrutinizer](https://github.com/bengtmartensson/IrScrutinizer/releases) with Arduino Nano
+and [GirsLite 1.0.2](https://github.com/bengtmartensson/AGirs/releases)
+firmware. Hook up IR receiver module to pins D5, GND and 5V, check "Use receive for capture" in the Girs client settings.
+Export as Arduino Raw or Bracketed Raw.
+
 IR Codes viewer: https://joric.github.io/irsend
 
 ## Video
@@ -42,4 +47,5 @@ IR Sender Web Interface
 * https://clearwater.com.au/code/rc5
 * http://www.hifi-remote.com/johnsfine/DecodeIR.html
 * https://github.com/probonopd/irdb
-* https://github.com/bengtmartensson/IrScrutinizer/releases
+* https://github.com/bengtmartensson/IrScrutinizer
+* https://github.com/bengtmartensson/AGirs
