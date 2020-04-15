@@ -1,4 +1,4 @@
-# IR Sender
+# IR Host
 
 A small ESP-12F (ESP8266)-based project for DIY IR controller
 
@@ -42,7 +42,7 @@ IR Sender Web Interface
 
 ## References
 
-* https://joric.github.io/irsend
+* https://joric.github.io/irhost
 * https://www.techdesign.be/projects/011/011_waves.htm
 * https://clearwater.com.au/code/rc5
 * http://www.hifi-remote.com/johnsfine/DecodeIR.html
