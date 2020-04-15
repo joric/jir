@@ -49,3 +49,4 @@ IR Sender Web Interface
 * https://github.com/probonopd/irdb
 * https://github.com/bengtmartensson/IrScrutinizer
 * https://github.com/bengtmartensson/AGirs
+* https://github.com/probonopd/decodeir
