@@ -81,7 +81,7 @@ body > .container {
 <div id="hint"></div>
 </div>
 </div>
-<canvas class="my-4 w-100" id="myChart" width="900" height="400"></canvas>
+<canvas class="my-4 w-100" id="myChart" width="900" height="200"></canvas>
 </form>
 </div>
 <script>
@@ -90,58 +90,57 @@ var myChart = null;
 
 function updateChart() {
 
-    var s = $('#raw').val();
+  var s = $('#raw').val();
 
-    var data = s=='' ? [] : s.replace(/, +/g, ",").split(",").map(Number);
+  var data = s=='' ? [] : s.replace(/, +/g, ",").split(",").map(Number);
+  var n = data.length;
 
-    var n = data.length;
+  $('#hint').text(n+" value"+(n!=1?"s":"")+", 38 KHz modulation");
 
-    //pulse_ms = 1000/38000;
-    pulse_ms = 0.889;
+  var labels = [];
+  var points = [];
+  var t = 0;
+  var h = 1;
+  var minX = 0;
 
-    var ms = n * pulse_ms;
-    var mse = n==0 ? 0 : ms / n;
+  for (x of data) {
+      points.push({x:t,y:h});
+      h = !h;
+      t += x;
+      maxX = t;
+  }
 
-    $('#hint').text(n+" value"+(n!=1?"s":"")+", " + ms.toFixed(3) + " ms ("+mse.toFixed(3)+" ms per value, 38 KHz modulation)");
-
-    //add the last value to data to make better chart
-    data.push(data.slice(-1)[0]);
-
-    var labels = []
-    var t = 0;
-
-    for (var i=0; i<data.length; i++) {
-        t = i * pulse_ms;
-        labels.push(t.toFixed(2)+'ms');
-    }
-
+  points.push({x:t,y:0});
 
   var ctx = document.getElementById('myChart')
 
   if (myChart) myChart.destroy();
 
   myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'scatter',
     data: {
-      labels: labels,
       datasets: [{
         steppedLine: 'before',
-        data: data,
+        data: points,
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',
         borderWidth: 2,
         pointBackgroundColor: '#007bff',
         pointRadius: 1,
-        pointHoverRadius: 1
+        pointHoverRadius: 1,
+        showLine: true
       }]
     },
     options: {
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero: false
+            beginAtZero: false,
           }
+        }],
+        xAxes: [{
+            ticks: { max: maxX, min: minX }
         }]
       },
       legend: {
@@ -149,7 +148,6 @@ function updateChart() {
       },
     }
   });
-
 
 }
 
