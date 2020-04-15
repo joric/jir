@@ -20,7 +20,7 @@ and [GirsLite 1.0.2](https://github.com/bengtmartensson/AGirs/releases)
 firmware. Hook up IR receiver module to pins D5, GND and 5V, check "Use receive for capture" in the Girs client settings.
 Export as Arduino Raw or Bracketed Raw.
 
-IR Codes viewer: https://joric.github.io/irsend
+IR Codes viewer: https://joric.github.io/irhost
 
 ## Video
 
@@ -28,21 +28,12 @@ IR Codes viewer: https://joric.github.io/irsend
 
 ## Pictures
 
-IR Sender (ESP12F-based)
-![](https://i.imgur.com/cuKyaiH.jpg)
-
-IR Receiver (NodeMCU-based)
-![](https://i.imgur.com/2mgzBxz.jpg)
-
-Fan (Mystery MSF-2414). Black box is Hi-Link 5V PSU), built in condenser PSU is only 15 mA, ESP8266 needs 300 mA
-![](https://i.imgur.com/v785Rjy.jpg)
-
-IR Sender Web Interface
-![](https://i.imgur.com/6EhBSfD.jpg)
+* https://imgur.com/a/qzOVUFb
 
 ## References
 
 * https://joric.github.io/irhost
+* https://imgur.com/a/qzOVUFb
 * https://www.techdesign.be/projects/011/011_waves.htm
 * https://clearwater.com.au/code/rc5
 * http://www.hifi-remote.com/johnsfine/DecodeIR.html
