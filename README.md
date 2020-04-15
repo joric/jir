@@ -27,8 +27,7 @@ in capture settings, export as Arduino or Bracketed RAW.
 
 ## References
 
-* https://joric.github.io/joirc
-* https://imgur.com/a/qzOVUFb
+* https://github.com/mdhiggins/ESP8266-HTTP-IR-Blaster
 * https://www.techdesign.be/projects/011/011_waves.htm
 * https://clearwater.com.au/code/rc5
 * http://www.hifi-remote.com/johnsfine/DecodeIR.html
