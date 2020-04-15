@@ -1,4 +1,4 @@
-# IR Host
+# joirc
 
 A small ESP-12F (ESP8266)-based project for DIY IR controller
 
@@ -20,8 +20,6 @@ and [GirsLite 1.0.2](https://github.com/bengtmartensson/AGirs/releases)
 firmware. Hook up IR receiver module to pins D5, GND and 5V, check "Use receive for capture" in the Girs client settings.
 Export as Arduino Raw or Bracketed Raw.
 
-IR Codes viewer: https://joric.github.io/irhost
-
 ## Video
 
 [![](http://img.youtube.com/vi/UZf-yPra764/maxresdefault.jpg)](https://youtu.be/UZf-yPra764)
@@ -30,9 +28,13 @@ IR Codes viewer: https://joric.github.io/irhost
 
 * https://imgur.com/a/qzOVUFb
 
+## Web
+
+* https://joric.github.io/joirc
+
 ## References
 
-* https://joric.github.io/irhost
+* https://joric.github.io/joirc
 * https://imgur.com/a/qzOVUFb
 * https://www.techdesign.be/projects/011/011_waves.htm
 * https://clearwater.com.au/code/rc5
