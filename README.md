@@ -67,9 +67,9 @@ Sequence starts with light on and alternates. Timings also could be explicitly w
 
 `+1330 -438 +1258 -440 +410 -1288 +1260 -438 +1258 -440 +384 -1312 +386 -1312 +412 -1286 +386 -1312 +386 -1312 +1260 -440 +384 -8106`
 
-Bits are usually encoded in value pairs, For F12 bit specification (<1,-3|3,-1>) that means [long,short]=1, [short,long]=0:
+Bits are usually encoded in value pairs, For F12 bit specification (<1,-3|3,-1>) that means [+1x,-3x]=0, [+3x,-1x]=1.
 
-`[1330,438],[1258,440],[410,1288],[1260,438],[1258,440],[384,1312],... =  [1],[1],[0],[1],[1],[0],...`
+`[+1330,-438],[+1258,-440],[+410,-1288],[+1260,-438],[+1258,-440],[+384,-1312],... =  [1],[1],[0],[1],[1],[0],...`
 
 Examples above encode the same 12 bits, 110110000010. For F12 bitfield (D:3,S:1,F:8) that would mean
 D=3, S=1, F=65 (110,1,10000010 = 011b,1b,01000001b in LSB notation).
