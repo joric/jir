@@ -59,7 +59,7 @@ See http://www.hifi-remote.com/johnsfine/DecodeIR.html for details.
 
 ### Raw format
 
-RAW format is pretty simple, it's just a comma-separated sequence of microsecond timings with alternating amplitude:
+RAW format is pretty simple, it's just a comma-separated sequence of microsecond timings:
 
 `1330,438,1258,440,410,1288,1260,438,1258,440,384,1312,386,1312,412,1286,386,1312,386,1312,1260,440,384,8106`
 
