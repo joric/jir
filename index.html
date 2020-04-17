@@ -95,7 +95,12 @@ function updateChart() {
   var data = s=='' ? [] : s.replace(/, +/g, ",").split(",").map(Number);
   var n = data.length;
 
-  $('#hint').text(n+" value"+(n!=1?"s":"")+", 38 KHz modulation");
+  bits = ''
+  for (var i = 0; i<data.length; i+=2) {
+    bits += data[i]<data[i+1] ? '0' : '1';
+  }
+
+  $('#hint').text(n+" value"+(n!=1?"s":"")+", 38 KHz modulation"+", "+bits.length+" bits: "+bits);
 
   var labels = [];
   var points = [];
