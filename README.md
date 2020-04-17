@@ -34,44 +34,50 @@ This is probably the best detector and generator that reads IRP format notation 
 ([IrpProtocols.xml](https://github.com/bengtmartensson/IrpTransmogrifier/blob/master/src/main/resources/IrpProtocols.xml)),
 so it's data-driven and not hardcoded as, for example [decodeir](https://github.com/probonopd/decodeir).
 
+### IRP format notation
+
+Example (F12 format): **{37.9k,422}<1,-3|3,-1>(D:3,S:1,F:8,-80)***
+
+* **{37.9k,422}** General: {carrier frequency, time unit, sequencing rule}
+	* Carrier Frequency: Hz; e.g. 38.3k; default is 0k (no modulation)
+	* Time Unit: Integer that can represent durations. Suffix u (default) is microseconds, p is pulses of the carrier.
+	* Sequencing Rule: lsb|msb; lsb (default) means the least significant bit of a binary form is sent first.
+
+
+* **<1,-3|3,-1>** BitSpec: Rule for the translating bit sequences to duration <ZeroPulseSeq|OnePulseSeq|TwoPulseSeq....>
+	* Most IR protocols use only <ZeroPulseSeq|OnePulseSeq>, and the sequence is simply OnDuration,OffDuration.
+	* Example: NEC uses <1,-1|1,-3>. Durations are given in Time Units specified above.
+
+
+* **(D:3,S:1,F:8,-80)*** Bitfield: B:NumberOfBits:StartingBit (StartingBit is optional. B:6 is equivalent to B:6:0)
+	* if B=47=01000111, B:2:5 means x10xxxxx. B:2:5=10b=2. ~ is the bitwise complement operator, ~B=10111000.
+	* A trailing + means send one or more times, a trailing * means send zero or more times.
+	* No prefix means a flash, a preceeding "-" (minus) means a gap, which trails a signal.
+	* D means device code, S is subdevice code, F is function
+
+See http://www.hifi-remote.com/johnsfine/DecodeIR.html for details.
+
 ### Raw format
 
-RAW format is pretty simple, it's just a comma-separated sequence of timings (with alternating amplitude) e.g:
+RAW format is pretty simple, it's just a comma-separated sequence of microsecond timings with alternating amplitude:
 
 `1330,438,1258,440,410,1288,1260,438,1258,440,384,1312,386,1312,412,1286,386,1312,386,1312,1260,440,384,8106`
 
-Timings also could be explicitly written with alternating signs, '+' means high, '-' means low (order is always the same):
+Sequence starts with light on and alternates. Timings also could be explicitly written with alternating signs, where '+' means light on, '-' means light off (order is always the same):
 
 `+1330 -438 +1258 -440 +410 -1288 +1260 -438 +1258 -440 +384 -1312 +386 -1312 +412 -1286 +386 -1312 +386 -1312 +1260 -440 +384 -8106`
 
-Bits are encoded in pairs, [long,short] is 1, [short,long] is 0, e.g. [1330,438] is 1, [410,1288] is 0.
-Examples above are the same 12 bits, 110110000010. For F12 signal (D:3,S:1,F:8) that means D=3, S=1, F=65 (110+1+10000010 = 011b, 1b, 01000001b),
-where D is device code, S is subdevice code, F is function.
+Bits are usually encoded in value pairs, For F12 bit specification (<1,-3|3,-1>) that means [long,short]=1, [short,long]=0:
 
-### IRP format notation
+`[1330,438],[1258,440],[410,1288],[1260,438],[1258,440],[384,1312],... =  [1],[1],[0],[1],[1],[0],...`
 
-Example: **Mitsubishi {32.6k,300}<1,-3|1,-7>(D:8,F:8,1,-80)+**
+Examples above encode the same 12 bits, 110110000010. For F12 bitfield (D:3,S:1,F:8) that would mean
+D=3, S=1, F=65 (110,1,10000010 = 011b,1b,01000001b in LSB notation).
 
-* **{32.6k,300}** general: {carrier frequency, time unit, sequencing rule}
-	* Carrier Frequency: Hz; e.g. 38.3k; default is 0k--no modulation
-	* Time Unit: Integer that can represent durations. Suffix u (default) is microseconds, p denotes number of pulses of the carrier.
-	* Sequencing Rule: lsb|msb; lsb (default) means the least significant bit of a binary form is sent first.
+Carrier frequency (usually 38 Khz) doesn't really affect microsecond timings, every timing consists of many (dozens)
+bursts of light at the carrier frequency. It's just a pulse width modulation (PWM) thing, that controls signal brightness and intensity.
 
-* **<1,-1|1,-3>** BitSpec: Rule for the translating bit sequences to duration sequences.
-<ZeroPulseSeq|OnePulseSeq|TwoPulseSeq....>.
-Most IR protocols use only <ZeroPulseSeq|OnePulseSeq>, and the sequence is simply OnDuration,OffDuration. Example: NEC uses <1,-1|1,-3>
-
-* **(D:8,F:8,1,-80)+** Bitfield: D:NumberOfBits:StartingBit.
-if D=47= 01000111, D:2:5 means x10xxxxx. D:2:5 = 10b = 2. ~ is the bitwise complement operator. ~D =10111000. Specifying the StartingBit is optional. D:6 is equivalent to D:6:0.
-A trailing + means send one or more times. A trailing 3 means send 3 times; 3+ means at least 3 times. A trailing * means send zero or more times
-
-
-#### More examples
-
-* NEC: {38.4k,564}<1,-1|1,-3>(16,-8,D:8,S:8,F:8,~F:8,1,^108m)
-* F12: {37.9k,422}<1,-3|3,-1>(D:3,S:1,F:8,-80)*
-
-See http://www.hifi-remote.com/johnsfine/DecodeIR.html for details.
+Pronto hex format takes carrier frequency into account, so every value is adjusted as 1000000*value/carrierFrequency.
 
 ## References
 
