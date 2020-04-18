@@ -21,10 +21,6 @@ in capture settings, export as Arduino or Bracketed RAW.
 
 * https://imgur.com/a/qzOVUFb
 
-## Web
-
-* https://joric.github.io/joirc
-
 ## IR Codes
 
 There are a lot of formats, autodetection and generation of those formats is pretty complicated.
@@ -78,6 +74,8 @@ Carrier frequency (usually 38 Khz) doesn't really affect microsecond timings, ev
 bursts of light at the carrier frequency. It's just a pulse width modulation (PWM) thing, that controls signal brightness and intensity.
 
 Pronto hex format takes carrier frequency into account, so every value is adjusted as 1000000*value/carrierFrequency.
+
+See example here: https://joric.github.io/joirc
 
 ## References
 
