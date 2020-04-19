@@ -2,26 +2,40 @@
 
 A small ESP-12F (ESP8266)-based project for DIY IR controller
 
-## Description
-
-Use IRCapture for Arduino Nano with VS1838 IR receiver (from 37 in 1 set) to capture IR codes in RAW format.
-Use IRSender with ESP-12F and IR LED to send the codes. Mind that ESP12-F dies from 5V in about a week so use 3.3V regulator
-(e.g. AMS1117-based). NodeMCU modules are better (built in UART and 3.3V LDO) but they're a little bit expensive.
-
-There are a lot of types of IR codes, I went with RAW ones (long sequences of timings) sent at 38 KHz. You can also capture and decode them
-with [IrScrutinizer](https://github.com/bengtmartensson/IrScrutinizer/releases) and Arduino Nano
-(with [GirsLite 1.0.2](https://github.com/bengtmartensson/AGirs/releases) firmware). Hook up IR receiver module to pins D5, GND and 5V, check "Use receive for capture"
-in capture settings, export as Arduino or Bracketed RAW.
-
 ## Video
 
 [![](http://img.youtube.com/vi/UZf-yPra764/maxresdefault.jpg)](https://youtu.be/UZf-yPra764)
 
-## Pictures
+## Capturing and sending IR codes
+
+Use [IRCapture.ino](https://github.com/joric/joirc/blob/master/IRCapture/IRCapture.ino)
+and Arduino Nano with VS1838 IR receiver (from 37 in 1 set) hooked up to pin D2 to capture IR codes.
+You can also capture and convert IR codes with [IrScrutinizer](https://github.com/bengtmartensson/IrScrutinizer/releases) and Arduino Nano
+with [GirsLite 1.0.2](https://github.com/bengtmartensson/AGirs/releases) firmware (hook up IR receiver module to pins D5, GND and 5V, check "Use receive for capture"
+in capture settings, export as Arduino RAW). Send the codes in RAW format (comma-separated sequence of timings) via IR Sender's HTTP interface.
+
+## Hardware
+
+Solder as on the picture (GPIO15 pulled down to GND, EN pulled up to VCC).
+IR LED to GPIO4 (doesn't need a resistor).
+Hook up UART (RX to TXD0, TX to RXD0).
+To enable flash mode, short GPIO0 to GND during startup.
+Build and flash [IRSender.ino](https://github.com/joric/joirc/blob/master/IRSender/IRSender.ino)
+(use Arduino IDE setup from [ESP8266-HTTP-IR-Blaster](https://github.com/mdhiggins/ESP8266-HTTP-IR-Blaster)).
+Check for the IR Sender address in your Wi-Fi router settings.
+
+ESP12-F dies from 5V in about a week, so 3.3V regulator (e.g. AMS1117-based) is a must.
+You can also use NodeMCU boards, they are a little bit better (have built in UART and 3.3V regulator), but a few times more expensive.
+Mind that cheap fans use 15-20 mA condenser PSU's and Wi-Fi modules need 70-300 mA, so
+you probably would also need a separate [power supply](https://www.aliexpress.com/wholesale?catId=0&SearchText=3.3v%20transformer%20power%20supply).
+
+![](https://i.imgur.com/JxOm3yo.jpg)
+
+More pictures:
 
 * https://imgur.com/a/qzOVUFb
 
-## IR Codes
+## IR Protocol
 
 There are a lot of formats, autodetection and generation of those formats is pretty complicated.
 You could try looking into [IrpTransmogrifier](https://github.com/bengtmartensson/IrpTransmogrifier) code
