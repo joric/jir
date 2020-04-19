@@ -21,7 +21,7 @@ You can also use NodeMCU boards, they are a little bit better (have built in UAR
 Mind that cheap fans use 15-20 mA condenser PSU's and Wi-Fi modules need 70-300 mA, so
 you probably would also need a separate [power supply](https://www.aliexpress.com/wholesale?catId=0&SearchText=3.3v%20transformer%20power%20supply).
 
-![](https://i.imgur.com/JxOm3yo.jpg)
+![](https://i.imgur.com/XWuL0pX.jpg)
 
 More pictures:
 
