@@ -21,7 +21,7 @@ You can also use NodeMCU boards, they are a little bit better (have built in UAR
 Mind that cheap fans use 15-20 mA condenser PSU's and Wi-Fi modules need 70-300 mA, so
 you probably would also need a separate [power supply](https://www.aliexpress.com/wholesale?catId=0&SearchText=3.3v%20transformer%20power%20supply).
 
-![](https://i.imgur.com/nzwQ18E.jpg)
+![](https://i.imgur.com/9JLIY99.jpg)
 
 More pictures:
 
@@ -35,6 +35,11 @@ You can also capture and convert IR codes with [IrScrutinizer](https://github.co
 with [GirsLite 1.0.2](https://github.com/bengtmartensson/AGirs/releases) firmware (hook up IR receiver module to pins D5, GND and 5V, check "Use receive for capture"
 in capture settings, export as Arduino RAW).
 After you captured and saved the codes you can send them in a comma-separated RAW format via the IR Sender's HTTP interface.
+
+* https://github.com/bengtmartensson/AGirs/releases (GirsLite 1.0.2 firmwware)
+* https://github.com/bengtmartensson/IrScrutinizer/releases (IrScrutinizer)
+
+![](https://i.imgur.com/4w0tTFJ.jpg)
 
 ## IR Protocol
 
