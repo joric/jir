@@ -104,7 +104,7 @@ didn't work for some reason, so I just used roomba serial port to send commands 
 The serial port is located under the top cover (it can be lifted with bare hands), some kind of
 mini-DIN connector (sadly mouse/keyboard PS/2 adapters [don't fit](https://i.imgur.com/9b3O1Kg.jpg)).
 
-* [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script, works fine)
+* [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script, mostly works fine, occasionally hangs, probably regulator is overheating)
 * [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, codes grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html))
 * https://youtu.be/t2NgA8qYcFI (Video about adding Wi-Fi to Roomba)
 
