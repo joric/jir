@@ -97,6 +97,21 @@ Example (F12 format): **{37.9k,422}<1,-3|3,-1>(D:3,S:1,F:8,-80)***
 
 See http://www.hifi-remote.com/johnsfine/DecodeIR.html for details.
 
+## Roomba
+
+There's also a small project for Roomba 620 (in progress). I tried to utilize IR sender but it
+didn't work for some reason, so I just used roomba serial port to send commands (you need it for power anyway).
+The serial port is located under the top cover (it can be lifted with bare hands), some kind of
+mini-DIN connector (sadly mouse/keyboard PS/2 adapters [don't fit](https://i.imgur.com/9b3O1Kg.jpg)).
+
+* [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script, works fine)
+* [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, grabbed with IrScrutinizer from a perfectly working [RCoid](http://rcoid.de/remotefiles.html) remote)
+* https://youtu.be/t2NgA8qYcFI (Video about adding Wi-Fi to Roomba)
+
+Picture with a working adapter (note the 16V to 3.3V regulator and the unshielded module, it fits under the top cover):
+
+![](https://i.imgur.com/D0KXeZr.jpg)
+
 ## References
 
 * https://github.com/mdhiggins/ESP8266-HTTP-IR-Blaster
@@ -107,3 +122,5 @@ See http://www.hifi-remote.com/johnsfine/DecodeIR.html for details.
 * https://github.com/bengtmartensson/IrScrutinizer
 * https://github.com/bengtmartensson/AGirs
 * https://github.com/probonopd/decodeir
+* https://github.com/johnboiles/esp-roomba-mqtt
+* https://github.com/kg333/roomba_esp_wifi
