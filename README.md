@@ -109,9 +109,9 @@ mini-DIN connector (sadly mouse/keyboard PS/2 adapters [don't fit](https://i.img
 * [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, codes grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html))
 * https://youtu.be/t2NgA8qYcFI (Video about adding Wi-Fi to Roomba)
 
-Picture with a working adapter (note the AMS1117 3.3V regulator and the unshielded module, it fits under the top cover).
+**WARNING! Measured voltage on Roomba 620 serial adapter is 15V on battery, 20V while charging (!) so don't use AMS1117, it's up to 15V max, it will overheat, burn and kill your ESP12F. Use DC-DC adapter!**
 
-**WARNING don't use AMS1117, it's up to 15V max, it will overheat, burn and kill your ESP12F. Use DC-DC adapter.**
+Picture with a semi-working adapter (note the 3.3V regulator and the unshielded module, it fits under the top cover).
 
 ![](https://i.imgur.com/D0KXeZr.jpg)
 
