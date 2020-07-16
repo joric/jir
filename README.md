@@ -109,7 +109,9 @@ mini-DIN connector (sadly mouse/keyboard PS/2 adapters [don't fit](https://i.img
 * [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, codes grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html))
 * https://youtu.be/t2NgA8qYcFI (Video about adding Wi-Fi to Roomba)
 
-Picture with a working adapter (note the 16V to 3.3V regulator and the unshielded module, it fits under the top cover):
+Picture with a working adapter (note the AMS1117 3.3V regulator and the unshielded module, it fits under the top cover).
+
+**WARNING don't use AMS1117, it's up to 15V max, it will overheat, burn and kill your ESP12F. Use DC-DC adapter.**
 
 ![](https://i.imgur.com/D0KXeZr.jpg)
 
