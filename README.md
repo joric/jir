@@ -105,7 +105,7 @@ The serial port is located under the top cover (it can be lifted with bare hands
 mini-DIN connector (sadly mouse/keyboard PS/2 adapters [don't fit](https://i.imgur.com/9b3O1Kg.jpg)).
 
 * [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script, works fine)
-* [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, grabbed with IrScrutinizer from a perfectly working [RCoid](http://rcoid.de/remotefiles.html) remote)
+* [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html))
 * https://youtu.be/t2NgA8qYcFI (Video about adding Wi-Fi to Roomba)
 
 Picture with a working adapter (note the 16V to 3.3V regulator and the unshielded module, it fits under the top cover):

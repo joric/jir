@@ -9,10 +9,9 @@
 # If the pulse goes high for 2ms if the value is 1. The bit is ended by sending a 1ms high burst.
 
 # Grabbed from a working IR remote with IrScrutinizer
-# 
-#
-#
-#
+# clean: Freq=38000Hz[+3036,-981,+981,-3036,+981,-3036,+981,-3036,+3036,-981,+981,-3036,+981,-3036,+981,-50100][][]
+# spot: Freq=38000Hz[+3036,-981,+981,-3036,+981,-3036,+981,-3036,+981,-3036,+3036,-981,+981,-3036,+981,-50100][][]
+# dock: Freq=38000Hz[+2994,-1021,+1021,-2994,+1021,-2994,+1021,-2994,+2994,-1021,+2994,-1021,+2994,-1021,+2994,-50100][][]
 
 param=dock
 
