@@ -102,7 +102,7 @@ See http://www.hifi-remote.com/johnsfine/DecodeIR.html for details.
 There's also a small project for Roomba 620 (in progress). I tried to utilize IR sender but it
 didn't work for some reason, so I just used roomba serial port to send commands (you need it for power anyway).
 The serial port is located under the top cover (it can be lifted with bare hands), some kind of
-mini-DIN connector (sadly mouse/keyboard PS/2 adapters [don't fit](https://i.imgur.com/9b3O1Kg.jpg)).
+mini-DIN connector (sadly mouse/keyboard PS/2 adapters can't be donors for that, they [won't fit](https://i.imgur.com/9b3O1Kg.jpg)).
 
 * [RoombaSerial.ino](https://github.com/joric/joirc/blob/master/RoombaSerial/RoombaSerial.ino) (RoombaSerial sketch, mostly works fine, occasionally hangs, probably regulator is overheating)
 * [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script)
