@@ -107,7 +107,6 @@ mini-DIN connector (sadly mouse/keyboard PS/2 adapters can't be donors for that,
 * [RoombaSerial.ino](https://github.com/joric/joirc/blob/master/RoombaSerial/RoombaSerial.ino) (RoombaSerial sketch, mostly works fine, occasionally hangs, probably regulator is overheating)
 * [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script)
 * [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, codes grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html))
-* https://youtu.be/t2NgA8qYcFI (Video about adding Wi-Fi to Roomba)
 
 **WARNING! Measured voltage on Roomba 620 serial adapter is 15V on battery, 20V while charging (!) so don't use AMS1117, it's up to 15V max, it will overheat, burn and kill your ESP12F. Use DC-DC adapter!**
 
@@ -117,13 +116,14 @@ Picture with a semi-working adapter (note the 3.3V regulator and the unshielded 
 
 ## References
 
-* https://github.com/mdhiggins/ESP8266-HTTP-IR-Blaster
-* https://www.techdesign.be/projects/011/011_waves.htm
-* https://clearwater.com.au/code/rc5
-* http://www.hifi-remote.com/johnsfine/DecodeIR.html
-* https://github.com/probonopd/irdb
-* https://github.com/bengtmartensson/IrScrutinizer
-* https://github.com/bengtmartensson/AGirs
-* https://github.com/probonopd/decodeir
-* https://github.com/johnboiles/esp-roomba-mqtt
-* https://github.com/kg333/roomba_esp_wifi
+* https://github.com/mdhiggins/ESP8266-HTTP-IR-Blaster (ESP8266-based universal learning remote)
+* http://www.hifi-remote.com/johnsfine/DecodeIR.html (IRP format whitepaper)
+* https://www.techdesign.be/projects/011/011_waves.htm (different IR waveforms)
+* https://clearwater.com.au/code/rc5 (Philips RC5 format description)
+* https://github.com/probonopd/irdb (large IR codes database, uses original IR formats)
+* https://github.com/bengtmartensson/IrScrutinizer (Desktop IR capturing and decoding tool)
+* https://github.com/bengtmartensson/AGirs (IrScrutinizer firmware for microcontrollers)
+* https://github.com/probonopd/decodeir (command line IR decoding tool, supports pronto and raw)
+* https://github.com/johnboiles/esp-roomba-mqtt (esp roomba firmware, uses Roomba library)
+* https://www.reddit.com/r/esp8266/comments/flrqjf/roomba_620_esp/ (a Reddit post about roomba)
+* https://youtu.be/t2NgA8qYcFI (Upgrade Your Old Roomba to a Smart BotVac for $5)

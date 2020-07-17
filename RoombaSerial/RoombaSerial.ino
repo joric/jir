@@ -8,12 +8,15 @@ const char *password = WIFI_PASSWORD;
 WiFiServer server(80);
 
 void setup() {
-  Serial.begin(115200);
+  // This is required for Roomba (also note 50ms delay)
+  // The starting baud rate can be changed to 19200 by holding down the Clean button
+  // while powering on Roomba until you hear a sequence of descending tones
+  // I recommend setting default 115200 for compatibility
 
-  // this is required for Roomba (also note 50ms delay)
-  Serial.write(129);
+  Serial.begin(115200);
+  Serial.write(129); // 129 - Baud command
   delay(50);
-  Serial.write(11);
+  Serial.write(11); // 11 - 115200
   delay(50);
 
   // Connect to WiFi network
@@ -58,7 +61,6 @@ void loop() {
   String request = client.readStringUntil('\r');
   client.flush();
 
-  // Set LED according to the request
   client.println("HTTP/1.1 200 OK");
   client.println("Content-Type: text/html");
   client.println(""); //	do not forget this one
