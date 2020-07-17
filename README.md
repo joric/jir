@@ -103,13 +103,13 @@ There's also a small project for Roomba 620 (in progress). I tried to utilize IR
 didn't work for some reason, so I just used roomba serial port to send commands (you need it for power anyway).
 The serial port is located under the top cover (it can be lifted with bare hands), some kind of
 mini-DIN connector (sadly mouse/keyboard PS/2 adapters can't be donors for that, they [won't fit](https://i.imgur.com/9b3O1Kg.jpg)).
-I've used 3.3V regulator and the unshielded ESP12-F module, so it fits under the top cover.
+I've used 3.3V regulator and the unshielded ESP-12F module, so it fits under the top cover.
 
 * [RoombaSerial.ino](https://github.com/joric/joirc/blob/master/RoombaSerial/RoombaSerial.ino) (RoombaSerial sketch, mostly works fine, occasionally hangs, probably regulator is overheating)
 * [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script)
 * [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, codes grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html))
 
-**WARNING! Measured voltage on Roomba 620 serial adapter is 15V on battery, 20V while charging (!) so don't use AMS1117, it's up to 15V max, it will overheat, burn and kill your ESP12F with raw 20V. Use DC-DC adapter or MC33269.**
+**WARNING! Measured voltage on Roomba 620 serial adapter is 15V on battery, 20V while charging (!) so don't use AMS1117, it's up to 15V max, it will overheat, burn and kill your ESP module. Use DC-DC adapter or (maybe) MC33269.**
 
 ![](https://i.imgur.com/D0KXeZr.jpg)
 
