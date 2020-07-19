@@ -8,11 +8,10 @@ const char *password = WIFI_PASSWORD;
 WiFiServer server(80);
 
 void setup() {
-  // This is required for Roomba (also note 50ms delay)
   // The starting baud rate can be changed to 19200 by holding down the Clean button
   // while powering on Roomba until you hear a sequence of descending tones
+  // but you have to disconnect the battery to set it back to 115200
   // I recommend setting default 115200 for compatibility
-
   Serial.begin(115200);
   Serial.write(129); // 129 - Baud command
   delay(50);
