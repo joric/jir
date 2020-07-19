@@ -109,9 +109,22 @@ I've used 3.3V regulator and the unshielded ESP-12F module, so it fits under the
 * [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script)
 * [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, codes grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html))
 
+### Roomba OI (Open Interface) codes
+
+code| action
+ ---|---
+129 | baud (switch baud rate, 7 for 19200 or 11 for 115200)
+128 | start (switch mode, 131 for safe mode, 132 for debug)
+134 | spot
+135 | clean
+143 | dock
+
+E.g. you send 128,131,135 to clean (with 50 ms delay between commands). See [Roomba OI documentation](https://www.irobot.lv/uploaded_files/File/iRobot_Roomba_500_Open_Interface_Spec.pdf) for the codes.
+
 **WARNING! Measured voltage on Roomba 620 serial adapter is 15V on battery, 20V while charging (!) so don't use AMS1117, it's up to 15V max, it will burn and kill your ESP module. Use DC-DC adapter or (maybe) MC33269.**
 
 ![](https://i.imgur.com/D0KXeZr.jpg)
+
 
 ## References
 
