@@ -114,7 +114,8 @@ I've used 3.3V regulator and the unshielded ESP-12F module, so it fits under the
 code| action
  ---|---
 129 | baud (switch baud rate, 7 for 19200 or 11 for 115200)
-128 | start (switch mode, 131 for safe mode, 132 for debug)
+128 | start (switch mode, 131 - safe, 132 - full control over actuators)
+133 | power down
 134 | spot
 135 | clean
 143 | dock

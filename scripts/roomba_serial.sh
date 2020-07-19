@@ -29,7 +29,7 @@ case $param in
   dock)
     raw=128,131,143
     ;;
-  sleep)
+  power)
     raw=128,131,133
     ;;
 esac
