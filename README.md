@@ -121,6 +121,8 @@ Code | Action | Comment / IR sequence
 
 As for the serial you just send 3 bytes (with 50 ms delay), e.g. 128,131,135 to clean. See [Roomba OI documentation](https://www.irobot.lv/uploaded_files/File/iRobot_Roomba_500_Open_Interface_Spec.pdf).
 
+* https://youtu.be/t2NgA8qYcFI (very useful video, shows how to remove the top cover and send commands)
+
 **WARNING! Measured voltage on Roomba 620 serial adapter is 15V on battery, 20V while charging (!) so don't use AMS1117, it's up to 15V max, it will burn and kill your ESP module. Use DC-DC adapter or (maybe) MC33269.**
 
 ![](https://i.imgur.com/D0KXeZr.jpg)
@@ -138,4 +140,3 @@ As for the serial you just send 3 bytes (with 50 ms delay), e.g. 128,131,135 to 
 * https://github.com/probonopd/decodeir (command line IR decoding tool, supports pronto and raw)
 * https://github.com/johnboiles/esp-roomba-mqtt (esp roomba firmware, uses Roomba library)
 * https://www.reddit.com/r/esp8266/comments/flrqjf/roomba_620_esp/ (a Reddit post about roomba)
-* https://youtu.be/t2NgA8qYcFI (Upgrade Your Old Roomba to a Smart BotVac for $5)
