@@ -107,29 +107,19 @@ I've used 3.3V regulator and the unshielded ESP-12F module, so it fits under the
 
 * [RoombaSerial.ino](https://github.com/joric/joirc/blob/master/RoombaSerial/RoombaSerial.ino) (RoombaSerial sketch, mostly works fine, occasionally hangs, probably regulator is overheating)
 * [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script)
-* [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, maybe wrong carrier)
+* [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet)
 
-### Roomba IR (infrared) codes
+IR timings were grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html) remote. They don't work yet (maybe need mode change).
 
-ccde | action | raw
+Code | Action | Comment / IR sequence
 ---|---|---
+129|baud| (serial only) switch baud rate, 7 for 19200 or 11 for 115200
+128|start|(serial only) switch mode, 131 - safe, 132 - full control over actuators
 134|spot|3036,981,981,3036,981,3036,981,3036,981,3036,3036,981,981,3036,981
 135|clean|3036,981,981,3036,981,3036,981,3036,3036,981,981,3036,981,3036,981
-143|docl|2994,1021,1021,2994,1021,2994,1021,2994,2994,1021,2994,1021,2994,1021,2994
+143|dock|2994,1021,1021,2994,1021,2994,1021,2994,2994,1021,2994,1021,2994,1021,2994
 
-These timings were grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html) remote. Still can't make IRSender work with them.
-
-### Roomba OI (Open Interface) codes
-
-code| action
- ---|---
-129 | baud (switch baud rate, 7 for 19200 or 11 for 115200)
-128 | start (switch mode, 131 - safe, 132 - full control over actuators)
-134 | spot
-135 | clean
-143 | dock
-
-E.g. you send bytes 128,131,135 (with 50 ms delay) to clean. See [Roomba OI documentation](https://www.irobot.lv/uploaded_files/File/iRobot_Roomba_500_Open_Interface_Spec.pdf) for the rest of the codes.
+As for the serial port you just send 3 bytes (with 50 ms delay), e.g. 128,131,135 to clean. See [Roomba OI documentation](https://www.irobot.lv/uploaded_files/File/iRobot_Roomba_500_Open_Interface_Spec.pdf).
 
 **WARNING! Measured voltage on Roomba 620 serial adapter is 15V on battery, 20V while charging (!) so don't use AMS1117, it's up to 15V max, it will burn and kill your ESP module. Use DC-DC adapter or (maybe) MC33269.**
 
