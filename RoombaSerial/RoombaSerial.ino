@@ -11,7 +11,7 @@ void setup() {
   // The starting baud rate can be changed to 19200 by holding down the Clean button
   // while powering on Roomba until you hear a sequence of descending tones
   // but you have to disconnect the battery to set it back to 115200
-  // I recommend setting default 115200 for compatibility
+  // Using this you can set default 115200 for compatibility (note the 50ms delay)
   Serial.begin(115200);
   Serial.write(129); // 129 - Baud command
   delay(50);
