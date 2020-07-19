@@ -8,7 +8,7 @@
 # each bit is started by a 1ms low period. If the value is 0, the pulse stays low for 2 more ms.
 # If the pulse goes high for 2ms if the value is 1. The bit is ended by sending a 1ms high burst.
 
-# Grabbed from a working IR remote with IrScrutinizer
+# Grabbed from a working IR remote with IrScrutinizer (see iRoomba at http://rcoid.de/remotefiles.html)
 # clean: Freq=38000Hz[+3036,-981,+981,-3036,+981,-3036,+981,-3036,+3036,-981,+981,-3036,+981,-3036,+981,-50100][][]
 # spot: Freq=38000Hz[+3036,-981,+981,-3036,+981,-3036,+981,-3036,+981,-3036,+3036,-981,+981,-3036,+981,-50100][][]
 # dock: Freq=38000Hz[+2994,-1021,+1021,-2994,+1021,-2994,+1021,-2994,+2994,-1021,+2994,-1021,+2994,-1021,+2994,-50100][][]

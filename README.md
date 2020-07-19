@@ -107,7 +107,17 @@ I've used 3.3V regulator and the unshielded ESP-12F module, so it fits under the
 
 * [RoombaSerial.ino](https://github.com/joric/joirc/blob/master/RoombaSerial/RoombaSerial.ino) (RoombaSerial sketch, mostly works fine, occasionally hangs, probably regulator is overheating)
 * [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script)
-* [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, codes grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html))
+* [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet, maybe wrong carrier)
+
+### Roomba IR (infrared) codes
+
+ccde | action | raw
+---|---|---
+134|spot|3036,981,981,3036,981,3036,981,3036,981,3036,3036,981,981,3036,981
+135|clean|3036,981,981,3036,981,3036,981,3036,3036,981,981,3036,981,3036,981
+143|docl|2994,1021,1021,2994,1021,2994,1021,2994,2994,1021,2994,1021,2994,1021,2994
+
+These timings were grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html) remote. Still can't make IRSender work with them.
 
 ### Roomba OI (Open Interface) codes
 
@@ -115,7 +125,6 @@ code| action
  ---|---
 129 | baud (switch baud rate, 7 for 19200 or 11 for 115200)
 128 | start (switch mode, 131 - safe, 132 - full control over actuators)
-133 | power down
 134 | spot
 135 | clean
 143 | dock
