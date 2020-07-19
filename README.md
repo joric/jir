@@ -109,7 +109,7 @@ I've used 3.3V regulator and the unshielded ESP-12F module, so it fits under the
 * [roomba_serial.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_serial.sh) (RoombaSerial control script)
 * [roomba_ctrl.sh](https://github.com/joric/joirc/blob/master/scripts/roomba_ctrl.sh) (IRSender script, doesn't work yet)
 
-IR timings were grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html) remote. Doesn't work yet (maybe need mode change).
+IR timings grabbed with IrScrutinizer from a working [RCoid](http://rcoid.de/remotefiles.html) remote. Don't work yet (maybe need mode change).
 
 Code | Action | Comment / IR sequence
 ---|---|---
