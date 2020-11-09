@@ -35,4 +35,4 @@ case $param in
 esac
 
 echo $raw
-curl -G http://192.168.1.6 --data-urlencode "raw=$raw"
+curl -G http://192.168.1.7 --data-urlencode "raw=$raw"

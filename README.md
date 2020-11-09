@@ -127,6 +127,11 @@ As for the serial you just send 3 bytes (with 50 ms delay), e.g. 128,131,135 to 
 
 ![](https://i.imgur.com/brmV5nT.jpg)
 
+Note that after 5 minutes it disables power on the serial port.
+To disable sleep, pulse the BRC pin low periodically before these five minutes expire. Each pulse resets this five minute counter.
+
+![](https://i.imgur.com/erDHbxD.png)
+
 
 ## References
 
