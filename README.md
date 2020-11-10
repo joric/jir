@@ -133,6 +133,10 @@ There's a very useful video about disassembling and adding WiFi to Roomba:
 
 * https://youtu.be/t2NgA8qYcFI (shows how to remove the top cover and send commands for roomba)
 
+Same as a blog post:
+
+* https://www.crc.id.au/hacking-the-roomba-600
+
 While the 400 & 500 series are wakeable on the dock, the 600 series is not less you request [firmware upgrade from iRobot](https://robotics.stackexchange.com/questions/15433/create-2-losing-serial-communication-after-toggling-full-to-passive-while-chargi).
 It's possible to wake up the 600 series with a different version of sketch that pulses the BRC pin to prevent sleep, but that seems like a better solution.
 
