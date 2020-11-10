@@ -129,14 +129,15 @@ As for the serial you just send 3 bytes (with 50 ms delay), e.g. 128,131,135 to 
 
 ![esp-01 on roomba](https://i.imgur.com/brmV5nT.jpg)
 
-There's a very useful video about disassembling and adding WiFi to Roomba and a couple of sketches:
+There's a very useful video about disassembling and adding WiFi to Roomba:
 
 * https://youtu.be/t2NgA8qYcFI (shows how to remove the top cover and send commands for roomba)
-* https://github.com/thehookup/MQTT-Roomba-ESP01/blob/master/RoombaESP01_CONFIGURE.ino (500 series )
-* https://github.com/thehookup/MQTT-Roomba-ESP01/blob/master/Roomba_600_ESP01_CONFIGURE.ino (600 series)
 
 While the 400 & 500 series are wakeable on the dock, the 600 series is not less you request [firmware upgrade from iRobot](https://robotics.stackexchange.com/questions/15433/create-2-losing-serial-communication-after-toggling-full-to-passive-while-chargi).
 It's possible to wake up the 600 series with a different version of sketch that pulses the BRC pin to prevent sleep, but that seems like a better solution.
+
+* https://github.com/thehookup/MQTT-Roomba-ESP01/blob/master/RoombaESP01_CONFIGURE.ino (500x)
+* https://github.com/thehookup/MQTT-Roomba-ESP01/blob/master/Roomba_600_ESP01_CONFIGURE.ino (600x)
 
 To disable sleep, pulse the BRC pin low periodically before these five minutes expire. Each pulse resets this five minute counter.
 Careful! BRC pin is high voltage pin (+5V most of the time), direct connection kills your ESP.
