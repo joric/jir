@@ -121,21 +121,29 @@ Code | Action | Comment / IR sequence
 
 As for the serial you just send 3 bytes (with 50 ms delay), e.g. 128,131,135 to clean. See [Roomba OI documentation](https://www.irobot.lv/uploaded_files/File/iRobot_Roomba_500_Open_Interface_Spec.pdf).
 
-* https://youtu.be/t2NgA8qYcFI (very useful video, shows how to remove the top cover and send commands)
-
 ![cover removal](https://i.imgur.com/KYULdfd.png)
 
 **WARNING! Measured voltage on Roomba 620 serial adapter is 15V on battery, 20V while charging (!) so don't use AMS1117, it's up to 15V max, it will burn and kill your ESP module. Use DC-DC adapter or MC33269.**
 
-![esp wiring](https://i.imgur.com/brmV5nT.jpg)
+![esp-12f on roomba](https://i.imgur.com/D0KXeZr.jpg)
 
-Note that after 5 minutes it disables power on the serial port.
+![esp-01 on roomba](https://i.imgur.com/brmV5nT.jpg)
+
+There's a very useful video about disassembling and adding WiFi to Roomba and a couple of sketches:
+
+* https://youtu.be/t2NgA8qYcFI (shows how to remove the top cover and send commands for roomba)
+* https://github.com/thehookup/MQTT-Roomba-ESP01/blob/master/RoombaESP01_CONFIGURE.ino (500 series )
+* https://github.com/thehookup/MQTT-Roomba-ESP01/blob/master/Roomba_600_ESP01_CONFIGURE.ino (600 series)
+
+While the 400 & 500 series are wakeable on the dock, the 600 series is not less you request [firmware upgrade from iRobot](https://robotics.stackexchange.com/questions/15433/create-2-losing-serial-communication-after-toggling-full-to-passive-while-chargi).
+It's possible to wake up the 600 series with a different version of sketch that pulses the BRC pin to prevent sleep, but that seems like a better solution.
+
 To disable sleep, pulse the BRC pin low periodically before these five minutes expire. Each pulse resets this five minute counter.
 Careful! BRC pin is high voltage pin (+5V most of the time), direct connection kills your ESP.
 
-![din pinout](https://i.imgur.com/erDHbxD.png)
-
 ![esp pinout](https://i.imgur.com/cO1b62K.jpg)
+
+![din pinout](https://i.imgur.com/erDHbxD.png)
 
 ## References
 
