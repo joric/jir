@@ -123,15 +123,19 @@ As for the serial you just send 3 bytes (with 50 ms delay), e.g. 128,131,135 to 
 
 * https://youtu.be/t2NgA8qYcFI (very useful video, shows how to remove the top cover and send commands)
 
+![cover removal](https://i.imgur.com/KYULdfd.png)
+
 **WARNING! Measured voltage on Roomba 620 serial adapter is 15V on battery, 20V while charging (!) so don't use AMS1117, it's up to 15V max, it will burn and kill your ESP module. Use DC-DC adapter or MC33269.**
 
-![](https://i.imgur.com/brmV5nT.jpg)
+![esp wiring](https://i.imgur.com/brmV5nT.jpg)
 
 Note that after 5 minutes it disables power on the serial port.
 To disable sleep, pulse the BRC pin low periodically before these five minutes expire. Each pulse resets this five minute counter.
+Careful! BRC pin is high voltage pin (+5V most of the time), direct connection kills your ESP.
 
-![](https://i.imgur.com/erDHbxD.png)
+![din pinout](https://i.imgur.com/erDHbxD.png)
 
+![esp pinout](https://i.imgur.com/cO1b62K.jpg)
 
 ## References
 
