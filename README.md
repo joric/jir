@@ -23,6 +23,8 @@ you probably would also need a separate [power supply](https://www.aliexpress.co
 
 ![](https://i.imgur.com/9JLIY99.jpg)
 
+![](https://i.imgur.com/Z3OM5Vm.jpg)
+
 More pictures:
 
 * https://imgur.com/a/qzOVUFb
