@@ -1,4 +1,4 @@
-# joirc
+# jir
 
 A small ESP-12F (ESP8266)-based project for DIY IR controller
 
