@@ -1,4 +1,4 @@
-# Joric's IR Controller
+# Airmate
 
 A small ESP-12F (ESP8266)-based DIY IR controller originally written for the Airmate Mystery MSF-2414 fan.
 
